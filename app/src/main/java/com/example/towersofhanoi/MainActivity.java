@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity
 
         towerStack1 = new Stack();
         towerStack2 = new Stack();
-
     }
 
     public void tower0ButtonPressed(View v)
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity
                     View temp = placeholderVG.getChildAt(0);
                     placeholderVG.removeViewAt(0);
                     tower0VG.addView(temp, 0);
-
                 }
                 else
                 {
@@ -75,7 +74,6 @@ public class MainActivity extends AppCompatActivity
                 View temp = placeholderVG.getChildAt(0);
                 placeholderVG.removeViewAt(0);
                 tower0VG.addView(temp, 0);
-
             }
         }
         else
@@ -86,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                //case 1 move disc from tower to palce holder
+                //case 1 move disc from tower to place holder
                 placeholderValue = towerStack0.pop();
                 isPlaceholderFull = true;
 
@@ -96,7 +94,6 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-
     public void tower1ButtonPressed(View v)
     {
         if(isPlaceholderFull == true)
@@ -130,7 +127,6 @@ public class MainActivity extends AppCompatActivity
                 View temp = placeholderVG.getChildAt(0);
                 placeholderVG.removeViewAt(0);
                 tower1VG.addView(temp, 0);
-
             }
         }
         else
@@ -141,7 +137,7 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                //case 1 move disc from tower to palce holder
+                //case 1 move disc from tower to place holder
                 placeholderValue = towerStack1.pop();
                 isPlaceholderFull = true;
 
@@ -197,14 +193,19 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                //case 1 move disc from tower to palce holder
+                //case 1 move disc from tower to place holder
                 placeholderValue = towerStack2.pop();
                 isPlaceholderFull = true;
 
                 View temp = this.tower2VG.getChildAt(0);
                 this.tower2VG.removeViewAt(0);
                 this.placeholderVG.addView(temp);
+
             }
+        }
+        if(towerStack2.getCount() == 3)
+        {
+            Toast.makeText(this,"You Have Won!", Toast.LENGTH_LONG).show();
         }
     }
 }
